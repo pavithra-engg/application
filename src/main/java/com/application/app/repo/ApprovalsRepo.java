@@ -20,23 +20,13 @@ public interface ApprovalsRepo extends JpaRepository<ApprovalsEntity, Integer>{
 	
 	@Modifying
 	@org.springframework.transaction.annotation.Transactional
-	@Query(nativeQuery = true, value = "update students set levelsflag=:levelsflag,levelstatus=:levelstatus,userid=:userid where studentid=:studentid")
-	
-	int updateNextUser(@Param("levelsflag") String levelsflag,@Param("levelstatus") String levelstatus,@Param("userid") String userid,@Param("studentid") Integer studentid);
-	
-	
-	
-	@Modifying
-	@org.springframework.transaction.annotation.Transactional
 	@Query(nativeQuery = true, value = "insert into studentsdataapproval(studentid,levelsflag,levelsstatus,userid) values(:studentid,:levelsflag,:levelsstatus,:userid) ")
-	
 	int updateNextUserApprovalInsert(@Param("studentid") Integer studentid,@Param("levelsflag") String levelsflag,@Param("levelsstatus") String levelsstatus,@Param("userid") String userid);
 		
 	
 	@Modifying
 	@org.springframework.transaction.annotation.Transactional
 	@Query(nativeQuery = true, value = "update studentsdata set levelsflag=:levelsflag,userid=:userid where studentid=:studentid")
-	
 	int updateNextUserDynamic(@Param("levelsflag") String levelsflag,@Param("userid") String userid,@Param("studentid") Integer studentid);
 	
 	@Query(nativeQuery = true, value = "select levelsflag from users where cast(levelsflag as integer) > cast(:levelsflag as integer) order by levelsflag limit 1 ")

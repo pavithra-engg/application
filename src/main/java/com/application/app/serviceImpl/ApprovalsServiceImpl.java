@@ -29,26 +29,7 @@ public class ApprovalsServiceImpl implements ApprovalsService{
 	}
 	
 	
-	@Override
-	public Map<String, Object> updateNextUser(String levelsflag, String levelstatus, String userid, Integer studentid) {
-		Map<String, Object> repo = new LinkedHashMap<String, Object>();
 
-		int updated = usersrepo.updateNextUser(levelsflag, levelstatus, userid, studentid);
-		System.out.println("updated:::::" + updated);
-
-		if (updated > 0) {
-
-			repo.put("responseid", "1");
-			repo.put("responsedesc", "Update Successfully");
-
-		} else {
-
-			repo.put("responseid", "2");
-			repo.put("responsedesc", "Fail to Update");
-
-		}
-		return repo;
-	}
 
 	@Override
 	@Transactional
@@ -61,7 +42,7 @@ public class ApprovalsServiceImpl implements ApprovalsService{
 		int updated = usersrepo.updateNextUserApprovalInsert(studentid, levelsflag, levelsstatus, userid);
 		
 		String nextlevelsflag=usersrepo.getNextLevel(levelsflag);
-		String nextlevelsflaguser=usersrepo.getNextLevelUser(nextlevelsflag);
+		String nextlevelsflaguser=usersrepo.getNextLevelUser(levelsflag);
 		
 		int updated1=usersrepo.updateNextUserDynamic(nextlevelsflag, nextlevelsflaguser, studentid);
 		

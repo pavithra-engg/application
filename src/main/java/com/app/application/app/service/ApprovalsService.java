@@ -10,7 +10,7 @@ public interface ApprovalsService {
 	
 	Map<String, Object> getDetails(String userid);
 	
-	Map<String, Object> updateNextUser(String levelsflag,String levelstatus,String userid,Integer studentid);
+
 	
 	Map<String, Object> updateNextUserApprovalInsert(Integer studentid,String levelsflag, String levelsstatus,String userid);
 

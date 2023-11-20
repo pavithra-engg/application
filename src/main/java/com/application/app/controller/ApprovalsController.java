@@ -24,17 +24,9 @@ public class ApprovalsController {
 		return userserddd.getDetails(userid); 
 	}
 
-	@PostMapping("/updatenextlevel/{levelsflag}/{levelstatus}/{userid}/{studentid}")
-	Map<String, Object> UpdateNextLevel(@PathVariable String levelsflag,@PathVariable String levelstatus,
-			@PathVariable String userid,@PathVariable Integer studentid) {
-
-		return userserddd.updateNextUser(levelsflag, levelstatus, userid, studentid);
-	}
-
-	
-	@PostMapping("/updatenextusers/{levelsflag}/{levelsstatus}/{userid}/{studentid}")
+	@PostMapping("/updatenextusers/{studentid}/{levelsflag}/{levelsstatus}/{userid}")
 	Map<String, Object> updateNextUsers(@PathVariable Integer studentid,@PathVariable String levelsflag,@PathVariable String levelsstatus,@PathVariable String userid) {
-
+	
 		return userserddd.updateNextUserApprovalInsert(studentid, levelsflag, levelsstatus, userid);
 	}
 
