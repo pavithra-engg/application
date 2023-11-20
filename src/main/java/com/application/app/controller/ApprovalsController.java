@@ -18,8 +18,6 @@ public class ApprovalsController {
 	@Autowired 
 	ApprovalsService userserddd;
 	
-	
-	
 	@GetMapping("/studentdetails/{userid}")
 	Map<String, Object> getDetails(@PathVariable String userid) {
 
